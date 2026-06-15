@@ -159,12 +159,17 @@ def main():
     print("SELECT MODEL TO SAVE")
     print("=" * 60)
 
+    import sys
     model_names = list(models.keys())
 
     for i, name in enumerate(model_names, start=1):
         print(f"{i}. {name}")
 
-    choice = input("\nEnter model number: ")
+    if len(sys.argv) > 1:
+        choice = sys.argv[1]
+        print(f"\nModel number selected via argument: {choice}")
+    else:
+        choice = input("\nEnter model number: ")
 
     try:
 
@@ -209,7 +214,9 @@ def main():
 
         'storages': sorted(df['Storage_GB'].unique().tolist()),
 
-        'algorithms': model_names
+        'algorithms': model_names,
+
+        'selected_algorithm': selected_model_name
     }
 
     joblib.dump(

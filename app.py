@@ -22,7 +22,8 @@ def index():
         'processors': ['Intel Core i5', 'Intel Core i7', 'AMD Ryzen 5', 'AMD Ryzen 7'],
         'gpus': ['Intel Iris Xe', 'NVIDIA GTX 1650', 'NVIDIA RTX 3060'],
         'rams': [8, 16, 32],
-        'storages': [256, 512, 1024]
+        'storages': [256, 512, 1024],
+        'selected_algorithm': 'Random Forest'
     }
     return render_template('index.html', metadata=data, model_loaded=(model is not None))
 
